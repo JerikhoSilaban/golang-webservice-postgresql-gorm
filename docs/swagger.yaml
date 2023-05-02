@@ -1,0 +1,239 @@
+basePath: /
+definitions:
+  models.Author:
+    properties:
+      books:
+        items:
+          $ref: '#/definitions/models.Book'
+        type: array
+      createdAt:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  models.Book:
+    properties:
+      authorID:
+        type: integer
+      createdAt:
+        type: string
+      id:
+        type: integer
+      publisher:
+        type: string
+      title:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+host: 127.0.0.1:8000
+info:
+  contact:
+    email: soberkoder@swagger.io
+    name: API Support
+  description: This is a simple service for managing authors and books
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/license/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Book API
+  version: "1.0"
+paths:
+  /author:
+    post:
+      consumes:
+      - application/json
+      description: Post details of a Author corresponding to the input
+      parameters:
+      - description: create a author
+        in: body
+        name: models.Author
+        required: true
+        schema:
+          $ref: '#/definitions/models.Author'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Author'
+      summary: Post Author details
+      tags:
+      - authors
+  /author/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get details of a Author corresponding to the input Id
+      parameters:
+      - description: Id of the Author
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Author'
+      summary: Get Author details
+      tags:
+      - authors
+    put:
+      consumes:
+      - application/json
+      description: Update details of a author corresponding to the given Id
+      parameters:
+      - description: Id of the Book
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Author'
+      summary: Update author for the given Id
+      tags:
+      - authors
+  /authorandbook:
+    get:
+      consumes:
+      - application/json
+      description: Displays the authors and related books with respect to authorID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Author'
+            type: array
+      summary: Displays the authors and related books
+      tags:
+      - authors books
+  /authors:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all authors
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Author'
+      summary: Get Authors details
+      tags:
+      - authors
+  /book:
+    post:
+      consumes:
+      - application/json
+      description: Post details of a book corresponding to the input
+      parameters:
+      - description: create a book
+        in: body
+        name: models.Book
+        required: true
+        schema:
+          $ref: '#/definitions/models.Book'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Book'
+      summary: Post book details
+      tags:
+      - books
+  /book/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete details of a book corresponding to the input Id
+      parameters:
+      - description: Id of the Book
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Book'
+      summary: Delete book details for the given Id
+      tags:
+      - books
+    get:
+      consumes:
+      - application/json
+      description: Get details of a book corresponding to the input Id
+      parameters:
+      - description: Id of the Book
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Book'
+      summary: Get book details
+      tags:
+      - books
+    put:
+      consumes:
+      - application/json
+      description: Update details of a book corresponding to the given Id
+      parameters:
+      - description: Id of the Book
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Book'
+      summary: Update book for the given Id
+      tags:
+      - books
+  /books:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all books
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Book'
+      summary: Get books details
+      tags:
+      - books
+swagger: "2.0"

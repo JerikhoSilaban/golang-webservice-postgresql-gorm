@@ -8,6 +8,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// Book represents the model of Book
 type Book struct {
 	ID        uint   `gorm:"primaryKey"`
 	Title     string `gorm:"not null; unique; type:varchar(256)"`
@@ -17,7 +18,7 @@ type Book struct {
 	UpdatedAt time.Time
 }
 
-// Hook Function
+// This function is useful for rejecting the creation of a book with a title of less than 2 letters
 func (b *Book) BeforeCreate(tx *gorm.DB) (err error) {
 	fmt.Println("Book BeforeCreate()")
 

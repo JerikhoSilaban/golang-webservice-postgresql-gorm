@@ -10,6 +10,15 @@ import (
 	"gorm.io/gorm"
 )
 
+// CreateAuthor godoc
+// @Summary Post Author details
+// @Description Post details of a Author corresponding to the input
+// @Tags authors
+// @Accept json
+// @Produce json
+// @Param models.Author body models.Author true "create a author"
+// @Success 200 {object} models.Author
+// @Router /author [post]
 func CreateAuthor(ctx *gin.Context) {
 	db := database.GetDB()
 
@@ -37,6 +46,15 @@ func CreateAuthor(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, author)
 }
 
+// GetAuthorById godoc
+// @Summary Get Author details
+// @Description Get details of a Author corresponding to the input Id
+// @Tags authors
+// @Accept json
+// @Produce json
+// @Param id path int true "Id of the Author"
+// @Success 200 {object} models.Author
+// @Router /author/{id} [get]
 func GetAuthorById(ctx *gin.Context) {
 	id := ctx.Param("id")
 
@@ -58,6 +76,14 @@ func GetAuthorById(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, author)
 }
 
+// GetAuthors godoc
+// @Summary Get Authors details
+// @Description Get details of all authors
+// @Tags authors
+// @Accept json
+// @Produce json
+// @Success 200 {object} models.Author
+// @Router /authors [get]
 func GetAuthors(ctx *gin.Context) {
 	db := database.GetDB()
 
@@ -77,6 +103,15 @@ func GetAuthors(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, authors)
 }
 
+// UpdateAuthorById godoc
+// @Summary Update author for the given Id
+// @Description Update details of a author corresponding to the given Id
+// @Tags authors
+// @Accept json
+// @Produce json
+// @Param id path int true "Id of the Book"
+// @Success 200 {object} models.Author
+// @Router /author/{id} [put]
 func UpdateAuthorById(ctx *gin.Context) {
 	id := ctx.Param("id")
 
@@ -122,6 +157,15 @@ func UpdateAuthorById(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, authorUpdate)
 }
 
+// CreateBook godoc
+// @Summary Post book details
+// @Description Post details of a book corresponding to the input
+// @Tags books
+// @Accept json
+// @Produce json
+// @Param models.Book body models.Book true "create a book"
+// @Success 200 {object} models.Book
+// @Router /book [post]
 func CreateBook(ctx *gin.Context) {
 	db := database.GetDB()
 
@@ -152,6 +196,15 @@ func CreateBook(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, book)
 }
 
+// GetBookById godoc
+// @Summary Get book details
+// @Description Get details of a book corresponding to the input Id
+// @Tags books
+// @Accept json
+// @Produce json
+// @Param id path int true "Id of the Book"
+// @Success 200 {object} models.Book
+// @Router /book/{id} [get]
 func GetBookById(ctx *gin.Context) {
 	id := ctx.Param("id")
 
@@ -173,6 +226,14 @@ func GetBookById(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, book)
 }
 
+// GetBookById godoc
+// @Summary Get books details
+// @Description Get details of all books
+// @Tags books
+// @Accept json
+// @Produce json
+// @Success 200 {object} models.Book
+// @Router /books [get]
 func GetBooks(ctx *gin.Context) {
 	db := database.GetDB()
 
@@ -192,6 +253,15 @@ func GetBooks(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, books)
 }
 
+// UpdateBookById godoc
+// @Summary Update book for the given Id
+// @Description Update details of a book corresponding to the given Id
+// @Tags books
+// @Accept json
+// @Produce json
+// @Param id path int true "Id of the Book"
+// @Success 200 {object} models.Book
+// @Router /book/{id} [put]
 func UpdateBookById(ctx *gin.Context) {
 	id := ctx.Param("id")
 
@@ -231,6 +301,15 @@ func UpdateBookById(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, bookUpdate)
 }
 
+// DeleteBookById godoc
+// @Summary Delete book details for the given Id
+// @Description Delete details of a book corresponding to the input Id
+// @Tags books
+// @Accept json
+// @Produce json
+// @Param id path int true "Id of the Book"
+// @Success 200 {object} models.Book
+// @Router /book/{id} [delete]
 func DeleteBookByID(ctx *gin.Context) {
 	id := ctx.Param("id")
 
@@ -254,6 +333,15 @@ func DeleteBookByID(ctx *gin.Context) {
 	})
 }
 
+// GetAuthorWithBook godoc
+// @Summary Displays the authors and related books
+// @Description Displays the authors and related books with respect to authorID
+// @Tags authors books
+// @Accept json
+// @Produce json
+// @Success 200 {array} models.Book
+// @Success 200 {array} models.Author
+// @Router /authorandbook [get]
 func GetAuthorWithBook(ctx *gin.Context) {
 	db := database.GetDB()
 

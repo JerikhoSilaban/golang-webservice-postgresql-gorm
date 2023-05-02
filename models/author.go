@@ -2,6 +2,7 @@ package models
 
 import "time"
 
+// Book represents the model of Author
 type Author struct {
 	ID        uint   `gorm:"primaryKey"`
 	Name      string `gorm:"not null; unique; type:varchar(255)"`
